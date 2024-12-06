@@ -17,6 +17,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
         //diasbling the CSRF(coz if it will be enable then we can't do the put/post/delete operations on data
+
         httpSecurity.csrf(customizer -> customizer.disable());
         // to authorize the application , to achieve login restriction
         httpSecurity.authorizeHttpRequests(request -> request.anyRequest().authenticated());
