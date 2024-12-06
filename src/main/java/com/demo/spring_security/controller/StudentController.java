@@ -30,7 +30,7 @@ public class StudentController {
         return student;
     }
     // to get the csrf token so that we can do the operation on data with spring security enabled.
-    @GetMapping("csrf-token")
+    @GetMapping("/csrf-token")
     public CsrfToken getCsrfToken(HttpServletRequest request){
         return (CsrfToken) request.getAttribute("_csrf");
     }

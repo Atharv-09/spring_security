@@ -14,6 +14,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
@@ -50,7 +51,7 @@ public class SecurityConfig {
         // to authenticate through db
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         // encoding password using default encoder
-        provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
+        provider.setPasswordEncoder(new BCryptPasswordEncoder(12)); // added this object for validation of the Bcrypted password which we stored in DB
         // to the usr details from the db
         provider.setUserDetailsService(userDetailsService);
 
